@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LLsMP常见问题</title>
+<style>
+ul,li,h2,p {margin: 0px; padding: 0px;}
+h2,p {font-size: 14px; line-height: 28px;}
+body a {color: inherit;}
+body {background: #F7F7F7;}
+#wrapper {width: 700px; margin: 0 auto;}
+#header {line-height: 50px; padding: 0 15px 0 10px; overflow: hidden; background: #C33; margin: 0 0 1em 0;}
+#site-name {float: left;} #site-name h1 {margin: 0; padding: 0; font-family: "Myriad Pro"; font-size: 24px; color: #FFF;}
+#main {width: 680px; padding: 10px; min-height: 10em; background: #FFF;}
+#menu {font-size: 12px; color: #FFF; float: right;}
+#menu li {display: inline;}
+#footer {line-height: 30px; font-size: 12px; color: #FFF; background: #333; margin: 1em 0 0 0; padding: 0 10px;}
+</style>
+</head>
+
+<body>
+<div id="wrapper">
+  <div id="header">
+  <div id="site-name">
+    <h1>LLsMP常见问题</h1>
+  </div>
+    <div id="menu">
+      <ul>
+		<li><a href="./index.html">首页</a></li>
+        <li><a href="./faq.html">常见问题</a></li>
+		<li><a href="./phpinfo.php">PHPINFO</a></li>
+		<li><a href="./tz.php">VPS探针</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="main">
+  <h2>LLsMP 使用文档/常见问题</h2>
+  <p>安装eAccelerator : sh /root/llsmp/eaccelerator.sh</p>
+	<p>安装Zend Optimizer : sh /root/llsmp/zend_optimizer.sh</p>
+	<p>安装ionCube Loader : sh /root/llsmp/ioncube.sh</p>
+	<p>安装Google Performace Tools : sh /root/llsmp/perftools.sh</p>
+	<p>安装FTP(vsftpd) : sh /root/llsmp/vsftpd.sh</p>
+	<p>添加FTP帐号 : sh /root/llsmp/vsftpd.sh</p>
+	<p>安装Nginx前端 : sh /root/llsmp/nginx.sh</p>
+	<p>创建Litespeed虚拟主机 : sh /root/llsmp/vhost.sh</p>
+	<p>创建Nginx虚拟主机 : sh /root/llsmp/nginx.sh</p>
+	<p>进行备份 : sh /root/llsmp/backup.sh</p>
+	<p>重启Litespeed : /etc/init.d/lsws restart</p>
+	<p>重启MySQL : /etc/init.d/mysql(d) restart</p>
+	<p>重启Nginx : /etc/init.d/nginx restart</p>
+	<p>Litespeed后台 : http://{ip}:7080</p>
+	<p>phpMyAdmin : http://{ip}/phpmyadmin/</p>
+	<p>php.ini目录 : /usr/local/lsws/lsphp5/lib/php.ini</p>
+	<p>MySQL my.cnf : /etc/my.cnf (Centos) | /etc/mysql/my.cnf (Debian/Ubuntu)</p>
+	<p>Nginx conf档案 : /etc/nginx/nginx.conf 及 /etc/nginx/conf.d/下</p>
+	<p>虚拟主机目录: /home/wwwroot</p>
+	<p>虚拟主机文件权限修正 : chown -R nobody:nobody /home/wwwroot/域名/html</p>
+	<p>想获得更多详情，请到 h<a href="ttp://www.llsmp.cn">ttp://www.llsmp.cn</a></p>
+  </div>
+  <div id="footer">Copyright by LLsMP.CN</div>
+</div>
+</body>
+</html>
