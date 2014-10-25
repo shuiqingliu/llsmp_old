@@ -10,8 +10,8 @@ php_53=php-5.3.8.tar.gz
 php_53_source=http://down.llsmp.cn/files/php-5.3.8.tar.gz
 php_53_ver=5.3.8
 
-php_litespeed=php-litespeed-5.5.tgz
-php_litespeed_source=http://www.litespeedtech.com/packages/lsapi/php-litespeed-5.5.tgz
+php_litespeed=php-litespeed-6.7.tgz
+php_litespeed_source=http://www.litespeedtech.com/packages/lsapi/php-litespeed-6.7.tgz
 
 php_52_mail_header_patch=php-5.2.17-mail-header.patch
 php_52_mail_header_patch_source=http://files.directadmin.com/services/custombuild/php-5.2.17-mail-header.patch
