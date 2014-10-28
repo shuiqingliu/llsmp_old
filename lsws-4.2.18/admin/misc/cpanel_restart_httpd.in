@@ -1,0 +1,25 @@
+#!/bin/sh
+LS_PID=""
+LS_CONF=%LSWS_HOME%/conf/httpd_config.xml
+
+
+if [ "x$1" == "x--restart" ] || [ "x$1" == "x" ]; then
+
+    if [ -f '/tmp/lshttpd/lshttpd.pid' ]; then
+        LSPID=`cat /tmp/lshttpd/lshttpd.pid`
+        kill -0 $LSPID
+        if [ $? -eq 0 ]; then
+            touch /var/run/restartsrv_httpd.lock
+            service lsws restart
+            unlink /var/run/restartsrv_httpd.lock
+        fi
+    fi
+    PORT_OFFSET_CONF=`grep apachePortOffset "$LS_CONF"`
+    PORT_OFFSET=`expr "$PORT_OFFSET_CONF" : '.*<apachePortOffset>\(.*\)</apachePortOffset>'`
+    if [ "x$PORT_OFFSET" != 'x' ] && [ "$PORT_OFFSET" -ne 0 ]; then
+        /scripts/restartsrv_httpd_ls_bak $@
+    fi
+else
+    /scripts/restartsrv_httpd_ls_bak $@
+fi
+

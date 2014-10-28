@@ -1,0 +1,25 @@
+Installation Instructions for LiteSpeed Web Server
+--------------------------------------------------
+
+1. Extract the package at convinent location by using
+	tar xvfz lsws-XXXX.tar.gz
+       or
+	gunzip -c lsws-XXXX.tar.gz | tar xvf -
+	if you are not using the GNU tar
+
+2. Type 
+	cd lsws-XXXX
+
+3. If you want to install to system directory, you need to become root first.
+   Type 
+
+	./install.sh
+
+4. Follow the instruction on the screen
+
+
+For more information please look at the manual under the docs/ directory or 
+visit 
+
+	http://www.litespeedtech.com/
+

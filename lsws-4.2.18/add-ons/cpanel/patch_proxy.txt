@@ -1,0 +1,51 @@
+*** /home/gwang/lsws-3.3.17/add-ons/cpanel/httpd_config.xml	2008-07-15 13:33:20.000000000 -0400
+--- httpd_config.xml	2008-09-05 14:44:00.000000000 -0400
+***************
+*** 185,186 ****
+--- 185,230 ----
+      </extProcessor>
++     <extProcessor>
++         <type>proxy</type>
++         <name>127.0.0.1:2082</name>
++         <address>127.0.0.1:2082</address>
++         <note>for cPanel backend</note>
++         <maxConns>100</maxConns>
++         <pcKeepAliveTimeout>0</pcKeepAliveTimeout>
++         <initTimeout>60</initTimeout>
++         <retryTimeout>0</retryTimeout>
++         <respBuffer>0</respBuffer>
++     </extProcessor>
++     <extProcessor>
++         <type>proxy</type>
++         <name>127.0.0.1:2095</name>
++         <address>127.0.0.1:2095</address>
++         <note>for webmail backend</note>
++         <maxConns>100</maxConns>
++         <pcKeepAliveTimeout>0</pcKeepAliveTimeout>
++         <initTimeout>60</initTimeout>
++         <retryTimeout>0</retryTimeout>
++         <respBuffer>0</respBuffer>
++     </extProcessor>
++     <extProcessor>
++         <type>proxy</type>
++         <name>127.0.0.1:2086</name>
++         <address>127.0.0.1:2086</address>
++         <note>for WHM backend</note>
++         <maxConns>100</maxConns>
++         <pcKeepAliveTimeout>0</pcKeepAliveTimeout>
++         <initTimeout>60</initTimeout>
++         <retryTimeout>0</retryTimeout>
++         <respBuffer>0</respBuffer>
++     </extProcessor>
++     <extProcessor>
++         <type>proxy</type>
++         <name>127.0.0.1:2077</name>
++         <address>127.0.0.1:2077</address>
++         <note>for webdisk backend</note>
++         <maxConns>100</maxConns>
++         <pcKeepAliveTimeout>0</pcKeepAliveTimeout>
++         <initTimeout>60</initTimeout>
++         <retryTimeout>0</retryTimeout>
++         <respBuffer>0</respBuffer>
++     </extProcessor>
+    </extProcessorList>

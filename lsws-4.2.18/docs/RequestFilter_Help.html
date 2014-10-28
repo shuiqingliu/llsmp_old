@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>LiteSpeed Web Server Users' Manual - Request Filtering</title>
+  <meta name="description" content="LiteSpeed Web Server Users' Manual - Request Filtering." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="css/hdoc.css">
+</head>
+<body>
+<div class="pagewrapper"><div class="sidetree">
+<h3>LiteSpeed Web Server <a href="index.html"> Users' Manual</a></h3>
+<h5>Version 5.0 Rev. 1 </h5>
+<hr/>
+<div>
+<ul class="toctop">
+<li>License <a href="license_std.html">Std</a> / <a href="license.html">Ent</a></li>
+<li><a href="intro.html">Introduction</a></li>
+<li><a href="install.html">Installation</a></li>
+<li><a href="admin.html">Administration</a>
+	<ul class="level2"><li><a href="ServerStat_Help.html">Service Manager</a></li></ul></li>
+<li><a href="security.html">Security</a></li>
+<li><a href="config.html">Configurations</a>
+	<ul class="level2">
+	<li><a href="ServGeneral_Help.html">Server General</a></li>
+	<li><a href="ServTuning_Help.html">Server Tuning</a></li>
+	<li><a href="ServSecurity_Help.html">Server Security</a></li>
+	<li><span class="current"><a href="RequestFilter_Help.html">Request Filter</a></span></li>
+	<li><a href="Cache_Help.html">Page Cache</a></li>
+	<li><a href="ExtApp_Help.html">External Apps</a></li>
+	<li><a href="ScriptHandler_Help.html">Script Handler</a></li>
+	<li><a href="Rails_Help.html">Rack/Rails Settings</a></li>
+	<li><a href="Listeners_Help.html">Listeners</a></li>
+	<li><a href="Templates_Help.html">Templates</a></li>
+	<li><a href="VirtualHosts_Help.html">Virtual Host List</a></li>
+	<li><a href="VHGeneral_Help.html">Virtual Host General</a></li>
+	<li><a href="VHSecurity_Help.html">Virtual Host Security</a></li>
+	<li><a href="Rewrite_Help.html">Rewrite</a></li>
+	<li><a href="Context_Help.html">Context</a></li>
+	<li><a href="VHAddOns_Help.html">Add-ons</a></li>
+	<li><a href="AdminGeneral_Help.html">Admin Server</a></li>
+	<li><a href="AdminListener_Help.html">Admin Listeners</a></li>
+	</ul>
+
+</li>
+</ul>
+</div></div>
+<div class="contentwrapper"><div class="nav-bar"><div class="prev">&#171 <a href="ServSecurity_Help.html">Server Security</a></div><div class="center"><a href="config.html">Configuration</a></div><div class="next"><a href="Cache_Help.html">Page Cache Settings</a> &#187;</div></div>
+<h1>Request Filtering</h1><p>LiteSpeed's request filter is equivalent to that in Apache's mod_security. 
+There are two separate rule systems. Rules configured from the WebAdmin console only 
+work for virtual hosts configured via the WebAdmin console in native xml. 
+For virtual hosts configured through Apache httpd.conf, you  
+need to configure mod_security rules through httpd.conf, just like you would with Apache.</p>
+<h4>Table of Contents</h4><section class="toc"><section class="toc-row"><header>Request Filter</header><p>
+<a href="#enableCensorship">Enable Request Filtering</a>&nbsp;|&nbsp;<a href="#censorLogLevel">Log Level</a>&nbsp;|&nbsp;<a href="#defaultAction">Default Action</a>&nbsp;|&nbsp;<a href="#scanPOST">Scan Request Body</a>&nbsp;|&nbsp;<a href="#disableSecHtaccess">Disable .htaccess Override</a>&nbsp;|&nbsp;<a href="#secAuditLogEngine">Enable Security Audit Log</a>&nbsp;|&nbsp;<a href="#secAuditLog">Security Audit Log</a>&nbsp;|&nbsp;</p></section>
+<section class="toc-row"><header><a href="#reqCensorshipRule">Request Filtering Rule Set</a></header><p>
+<a href="#censorRuleSetName">Name</a>&nbsp;|&nbsp;<a href="#ruleSetAction">Rule Set Action</a>&nbsp;|&nbsp;<a href="#censorRuleSetEnabled">Enabled</a>&nbsp;|&nbsp;<a href="#censorRuleSet">Rules Definition</a>&nbsp;|&nbsp;</p></section>
+</section>
+<section><div class="helpitem"><a name="enableCensorship"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Enable Request Filtering<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies whether to enable request content deep inspection. This feature is equivalent to Apache's mod_security, which can be used to detect and block requests with ill intention by matching them to known signatures.</td></tr> <tr><td><span class="ht-label">Syntax: </span>Select from radio box</td></tr> </table> </div>
+<div class="helpitem"><a name="censorLogLevel"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Log Level<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies the level of detail of the request filtering engine's debug output. This value ranges from <span class="val">0</span> - <span class="val">9</span>. <span class="val">0</span> disables logging. <span class="val">9</span> produces the most detailed log. The the server and virtual host's error log <span class="tagI"><a href="ServGeneral_Help.html#log_logLevel">Log Level</a></span> must be set to at least <span class="val">INFO</span> for this option to take effect. This is useful when testing your request filtering rules.</td></tr> <tr><td><span class="ht-label">Syntax: </span>Integer number</td></tr> <tr><td><span class="ht-label">See Also: </span>Server <span class="tagI"><a href="ServGeneral_Help.html#log_logLevel">Log Level</a></span>, Virtual Host <span class="tagI"><a href="VHGeneral_Help.html#vhlog_logLevel">Log Level</a></span></td></tr> </table> </div>
+<div class="helpitem"><a name="defaultAction"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Default Action<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies the default actions that should be taken when a censoring rule is met. Default value is <span class="val">deny,log,status:403</span>, which means to deny access with status code 403 and log the incident in the error log.</td></tr> <tr><td><span class="ht-label">Syntax: </span> String. This action string is compatible with the syntax of Apache mod_security. Please refer to the mod_security manual for more detail. <br/> EXAMPLE:  END_EXAMPLE<br/> TIPS:  END_TIPS<br/> </td></tr> <tr><td><span class="ht-label">See Also: </span><span class="tagI"><a href="#ruleSetAction">Rule Set Action</a></span></td></tr> </table> </div>
+<div class="helpitem"><a name="scanPOST"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Scan Request Body<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies whether to check the body of a HTTP POST request.  Default is "No".</td></tr> <tr><td><span class="ht-label">Syntax: </span>Select from radio box</td></tr> </table> </div>
+<div class="helpitem"><a name="disableSecHtaccess"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Disable .htaccess Override<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies whether to disable .htaccess override. This is a global setting, only available at the server level.  Default is "No".</td></tr> <tr><td><span class="ht-label">Syntax: </span>Select from radio box</td></tr> </table> </div>
+<div class="helpitem"><a name="secAuditLogEngine"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Enable Security Audit Log<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies whether to enable audit logging. This feature is equivalent to Apache's mod_security audit engine.  If it is enabled and <span class="tagI"><a href="#secAuditLog">Security Audit Log</a></span> is set, detailed request information will be saved.</td></tr> <tr><td><span class="ht-label">Syntax: </span>Select from radio box</td></tr> <tr><td><span class="ht-label">See Also: </span><span class="tagI"><a href="#secAuditLog">Security Audit Log</a></span></td></tr> </table> </div>
+<div class="helpitem"><a name="secAuditLog"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Security Audit Log<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies the path of the security audit log, which gives more detailed information.   This extra information can be useful if, for example, you wish to track the actions of   a particular user. Use <span class="tagI"><a href="#secAuditLogEngine">Enable Security Audit Log</a></span> to turn on the logging.</td></tr> <tr><td><span class="ht-label">Syntax: </span>File name which can be an absolute path or relative to $SERVER_ROOT.</td></tr> <tr><td><span class="ht-label">See Also: </span><span class="tagI"><a href="#secAuditLogEngine">Enable Security Audit Log</a></span></td></tr> </table> </div>
+<div class="helpitem"><a name="reqCensorshipRule"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Request Filtering Rule Set<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Rules configured here only work for virtual hosts configured with a native LSWS configuration, not for virtual hosts using Apache httpd.conf.</td></tr> </table> </div>
+<div class="helpitem"><a name="censorRuleSetName"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Name<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Give a group of censorship rules a name. For display only.</td></tr> <tr><td><span class="ht-label">Syntax: </span>String</td></tr> </table> </div>
+<div class="helpitem"><a name="ruleSetAction"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Rule Set Action<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies the actions that should be taken when a censoring rule in current ruleset is met. If not set, <span class="tagI"><a href="#defaultAction">Default Action</a></span> will be used.</td></tr> <tr><td><span class="ht-label">Syntax: </span>String.  This action string uses the same syntax as directive SecDefaultAction in  Apache mod_security, please refer to the mod_security manual for more details.</td></tr> </table> </div>
+<div class="helpitem"><a name="censorRuleSetEnabled"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Enabled<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies whether to enable this rule set. With this option, a rule set can be quickly turned on and off without adding or removing the rule set. Default is "Yes".</td></tr> <tr><td><span class="ht-label">Syntax: </span>Select from radio box</td></tr> </table> </div>
+<div class="helpitem"><a name="censorRuleSet"></a><table width="100%" class="ht" border="0" cellpadding="5" cellspacing="0"> <tr class="ht-title"><td><div>Rules Definition<span class="top"><a href="#top"><img border=0 height=13 width=13 alt="Go to top" src="img/top.gif"></a></span></div></td></tr> <tr><td><span class="ht-label">Description: </span>Specifies a list of censorship rules.<br/><br/> If you are using an Apache config file, you have to set up rules in httpd.conf.  Rules defined here will have no effect.</td></tr> <tr><td><span class="ht-label">Syntax: </span>String. Syntax of censoring rules follows that of Apache's mod_security directives. "SecFilter", "SecFilterSelective", and "SecRule" can be  used here.  You can copy and paste security rules from an Apache configuration file.<br/><br/> For more details about rule syntax, please refer to the  <a href="http://www.modsecurity.org/documentation/index.html" target="_blank">Mod Security documentation</a>.</td></tr> <tr><td><span class="ht-label">Tips: </span>Rules configured here only work for vhosts configured in native LSWS configuration, not for vhosts from Apache httpd.conf.</td></tr> </table> </div>
+</section>
+</div><footer class="copyright">Copyright &copy; 2003-2014. <a href="http://www.litespeedtech.com">Lite Speed Technologies Inc.</a> All rights reserved.</footer>
+				</div>
+				</body>
+				</html>

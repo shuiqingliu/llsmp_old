@@ -1,0 +1,86 @@
+#!/bin/sh
+
+ARGS="$@"
+ARG1="$1"
+
+LSWS_HOME=%LSWS_HOME%
+APACHE_BIN=%APACHE_BIN%
+
+CTRL_APACHE=%CTRL_APACHE%
+
+APACHE=%APACHE_BIN%_ls_bak
+
+
+LSWS=$LSWS_HOME/bin/lswsctrl
+PARAM_LOG=$LSWS_HOME/logs/ap_cmd_param.log
+APACHE_STATE=$LSWS_HOME/admin/cgid/apache_state
+
+ulimit -v unlimited
+
+if [ ! -f $LSWS ]; then
+    mv $APACHE $APACHE_BIN
+    $APACHE_BIN $ARGS
+    exit $?
+fi
+
+echo "`date`: $@" >> $PARAM_LOG
+
+if [ "x$ARG1" = 'x-DSSL' ]; then
+   shift
+   ARG1=$1
+fi
+
+if [ "x$ARG1" = 'x' ]; then
+    $LSWS restart
+    
+elif [ "x$ARG1" = 'x-k' ]; then
+    ARG2=$2
+    case $ARG2 in
+    start|startssl|sslstart|start-SSL)
+    echo "START" > $APACHE_STATE
+    $LSWS restart
+    ERR=$?
+    if [ "x$CTRL_APACHE" = "x1" ]; then
+        $APACHE $ARGS
+    fi
+    exit $ERR
+    ;;
+    stop|graceful-stop)
+    # never stop LSWS here, use "service lsws stop" instead
+    # have to stop lsws or make cPanel belive apache is stopped,
+    # otherwise cpanel will send signal "9"
+    $LSWS stophttpd
+    if [ "x$CTRL_APACHE" == "x1" ]; then
+        $APACHE $ARGS
+    else
+        echo ""
+    fi
+    ;;
+    restart|graceful)
+    echo "START" > $APACHE_STATE
+    $LSWS restart
+    ;;
+    *)
+    $APACHE $ARGS
+    esac
+else
+    if [ "x$ARG1" = "xuninstall" ]; then
+        if [ "x$CTRL_APACHE" = "x0" ]; then
+            $LSWS stop
+            sleep 1
+        fi
+        mv $APACHE $APACHE_BIN
+        $APACHE_BIN 
+    elif [ "x$ARG1" = "xinstall" ]; then
+        if [ "x$CTRL_APACHE" = "x0" ]; then
+            killall `basename $APACHE_BIN`
+        fi
+        echo "START" > $APACHE_STATE
+        $LSWS start
+    else
+        $APACHE $ARGS
+    fi
+fi
+
+ERROR=$?
+exit $ERROR
