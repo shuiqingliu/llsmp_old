@@ -3,5 +3,5 @@
 > 1. 更新LSAPI至最新6.7版本
 > 2. 更新Litespeed 至最新4.2.18版本
 > 3. 修复安装Litespeed时侯，处理已安装Litespeed的时候的交互错误
-> 4. 安装Litespeed时增加用户协议，默认同意
-
+> 4. 修复已安装Litespeed用户，在停止Litespeed时候的错误
+ 
