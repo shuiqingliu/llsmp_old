@@ -1,6 +1,6 @@
-lsws=lsws-4.1.3.tar.gz
-lsws_source=http://down.llsmp.cn/files/lsws-4.1.3.tar.gz
-lsws_ver=4.1.3
+lsws=lsws-4.2.18.tar.gz
+lsws_source=http://down.llsmp.cn/files/lsws-4.2.18.tar.gz
+lsws_ver=4.2.18
 
 php_52=php-5.2.17.tar.gz
 php_52_source=http://down.llsmp.cn/files/php-5.2.17.tar.gz
