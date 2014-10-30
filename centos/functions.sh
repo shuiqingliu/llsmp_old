@@ -219,6 +219,8 @@ chmod +x functions.sh
 #Install Litespeed
 expect -c "
 spawn /tmp/llsmp/lsws-4.1.3/install.sh
+expect \"Do you agree with above license?\"
+send \"Yes\r\"
 expect \"5RetHEgU10\"
 send \"\r\"
 expect \"5RetHEgU11\"
@@ -263,6 +265,8 @@ chmod +x functions.sh
 #Install Litespeed
 expect -c "
 spawn /tmp/llsmp/lsws-4.1.3/install.sh
+expect \"Do you agree with above license?\"
+send \"Yes\r\"
 expect \"5RetHEgU10\"
 send \"\r\"
 expect \"5RetHEgU11\"
