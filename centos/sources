@@ -22,8 +22,8 @@ php_53_mail_header_patch_source=http://down.llsmp.cn/files/1.0/php-5.3.8-mail-he
 php_ini=php.ini-dist
 php_ini_source=http://down.llsmp.cn/files/1.0/php.ini-dist
 
-phpinfo=0.6_phpinfo.tar.gz
-phpinfo_source=http://down.llsmp.cn/files/1.0/0.6_phpinfo.tar.gz
+phpinfo=1.0_phpinfo.tar.gz
+phpinfo_source=http://down.llsmp.cn/files/1.0/1.0_phpinfo.tar.gz
 phpinfo_dir=phpinfo
 
 phpmyadmin=phpMyAdmin-3.3.9-all-languages.tar.gz
