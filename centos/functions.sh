@@ -221,7 +221,6 @@ sleep 20
 #Install Litespeed
 /usr/local/lsws/bin/lswsctrl stop
 if [ -f "/usr/conf/httpd_config.xml" ]; then
-	/usr/local/lsws/bin/lswsctrl stop
 	rm -rf /usr/local/lsws
 	INSTALL_TYPE="reinstall"
 	SET_LOGIN=1
