@@ -534,5 +534,5 @@ echo "BYE~"
 
 installed_file()
 {
-echo "LLsMP 0.6 CentOS" >> /root/llsmp/.installed
+echo "LLsMP 1.0 CentOS" >> /root/llsmp/.installed
 }

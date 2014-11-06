@@ -34,14 +34,14 @@ default_conf=conf.tar.gz
 default_conf_source=http://down.llsmp.cn/files/1.0/conf.tar.gz
 default_conf_dir=conf
 
-debiantools=debian_tools_0.6.tar.gz
+debiantools=debian_tools_1.0.tar.gz
 debiantools_source=http://down.llsmp.cn/files/1.0/debian_tools_0.6.tar.gz
 debiantools_dir=debiantools
 
-centostools=centos_tools_0.6.tar.gz
+centostools=centos_tools_1.0.tar.gz
 centostools_source=http://down.llsmp.cn/files/1.0/centos_tools_0.6.tar.gz
 centostools_dir=centostools
 
-ubuntutools=ubuntutools_0.6c.tar.gz
+ubuntutools=ubuntutools_1.0c.tar.gz
 ubuntutools_source=http://down.llsmp.cn/files/1.0/ubuntutools_0.6c.tar.gz
 ubuntutools_dir=ubuntutools

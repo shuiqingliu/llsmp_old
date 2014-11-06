@@ -15,7 +15,7 @@ if [ $? != 0 ]; then
 fi
 clear
 echo "========================================================================="
-echo "LLsMP V0.6 for CentOS/RedHat Linux Written by llsmp.cn"
+echo "LLsMP V1.0 for CentOS/RedHat Linux Written by llsmp.cn"
 echo "========================================================================="
 echo "A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""
