@@ -65,9 +65,9 @@ EOF
     SUCC=0
     TRY=1
     while [ $SUCC -eq "0" ]; do
-        printf "%s" "Do you agree with above license? "  
+        printf "%s" "5RetHEgU1"  
         read YES_NO
-        if [ "x$YES_NO" != "xYes" ]; then
+        if [ "x$YES_NO" != "xY" ]; then
             if [ $TRY -lt 3 ]; then
                 echo "Sorry, wrong answer! Type 'Yes' with capital 'Y', try again!"
                 TRY=`expr $TRY + 1`
@@ -145,30 +145,30 @@ ATTENTION: The user '$WS_USER' must be able to access the destination
            directory.
 
 EOF
-		printf "%s" "5RetHEgU10"
-		read TMP_DEST
-		echo ""
-		if [ "x$TMP_DEST" = "x" ]; then
-			TMP_DEST=$DEST_RECOM
-		fi
-		if [ `expr "$TMP_DEST" : '~'` -gt 0 ]; then 
-			LSWS_HOME="$HOME`echo $TMP_DEST | sed 's/^~//' `"
-		else
-			LSWS_HOME=$TMP_DEST
-		fi
-		if [ `expr "$LSWS_HOME" : '\/'` -eq 0 ]; then
-			echo "[ERROR] Must be absolute path!"
-		else
-			SUCC=1
-		fi
-		if [ ! -d "$LSWS_HOME" ]; then
-			mkdir "$LSWS_HOME"
-			if [ ! $? -eq 0 ]; then
-				SUCC=0
-			fi
-		fi
-		if [ -f "$LSWS_HOME/conf/httpd_config.xml" ]; then
-			cat <<EOF
+        printf "%s" "5RetHEgU2"
+        read TMP_DEST
+        echo ""
+        if [ "x$TMP_DEST" = "x" ]; then
+            TMP_DEST=$DEST_RECOM
+        fi
+        if [ `expr "$TMP_DEST" : '~'` -gt 0 ]; then 
+            LSWS_HOME="$HOME`echo $TMP_DEST | sed 's/^~//' `"
+        else
+            LSWS_HOME=$TMP_DEST
+        fi
+        if [ `expr "$LSWS_HOME" : '\/'` -eq 0 ]; then
+            echo "[ERROR] Must be absolute path!"
+        else
+            SUCC=1
+        fi
+        if [ ! -d "$LSWS_HOME" ]; then
+            mkdir "$LSWS_HOME"
+            if [ ! $? -eq 0 ]; then
+                SUCC=0
+            fi
+        fi
+        if [ -f "$LSWS_HOME/conf/httpd_config.xml" ]; then
+            cat <<EOF
 
 Found old configuration file under destination directory $LSWS_HOME. 
 
@@ -178,7 +178,7 @@ To change directory, press 'C' or 'c'.
 
 EOF
 
-            printf "%s" "Would you like to Upgrade, Reinstall or Change directory [U/r/c]? "
+            printf "%s" "5RetHEgU16"
             read TMP_URC
             echo ""
             if [ "x$TMP_URC" = "x" ]; then
@@ -244,11 +244,11 @@ This is the user name required to log into the administration web interface.
 
 EOF
 
-		printf "%s" "5RetHEgU11"
-		read ADMIN_USER
-		if [ "x$ADMIN_USER" = "x" ]; then
-			ADMIN_USER=admin
-		fi
+        printf "%s" "5RetHEgU3"
+        read ADMIN_USER
+        if [ "x$ADMIN_USER" = "x" ]; then
+            ADMIN_USER=admin
+        fi
 
         cat <<EOF
 
@@ -257,31 +257,31 @@ This is the password required to log into the administration web interface.
 
 EOF
 
-		while [ $SUCC -eq "0" ];  do
-			printf "%s" "5RetHEgU12"
-			stty -echo
-			read PASS_ONE
-			stty echo
-			echo ""
-			if [ `expr "$PASS_ONE" : '.*'` -ge 6 ]; then
-				printf "%s" "5RetHEgU13"
-				stty -echo
-				read PASS_TWO
-				stty echo
-				echo ""
-				if [ "x$PASS_ONE" = "x$PASS_TWO" ]; then
-					SUCC=1
-				else
-					echo ""
-					echo "[ERROR] Sorry, passwords does not match. Try again!"
-					echo ""
-				fi
-			else
-				echo ""
-				echo "[ERROR] Sorry, password must be at least 6 characters!"
-				echo ""
-			fi
-		done
+        while [ $SUCC -eq "0" ];  do
+            printf "%s" "5RetHEgU4"
+            stty -echo
+            read PASS_ONE
+            stty echo
+            echo ""
+            if [ `expr "$PASS_ONE" : '.*'` -ge 6 ]; then
+                printf "%s" "5RetHEgU5"
+                stty -echo
+                read PASS_TWO
+                stty echo
+                echo ""
+                if [ "x$PASS_ONE" = "x$PASS_TWO" ]; then
+                    SUCC=1
+                else
+                    echo ""
+                    echo "[ERROR] Sorry, passwords does not match. Try again!"
+                    echo ""
+                fi
+            else
+                echo ""
+                echo "[ERROR] Sorry, password must be at least 6 characters!"
+                echo ""
+            fi
+        done
 
 
 # generate password file
@@ -307,22 +307,22 @@ a non-system user who does not have login shell and home directory such as
 
 EOF
 # get user name 
-		SUCC=0
-		while [ $SUCC -eq "0" ]; do
-			printf "%s" "5RetHEgU1"
-			read TMP_USER
-			if [ "x$TMP_USER" = "x" ]; then
-				TMP_USER=$WS_USER
-			fi
-			USER_INFO=`id $TMP_USER 2>/dev/null`
-			TST_USER=`expr "$USER_INFO" : 'uid=.*(\(.*\)) gid=.*'`
-			if [ "x$TST_USER" = "x$TMP_USER" ]; then
-				USER_ID=`expr "$USER_INFO" : 'uid=\(.*\)(.*) gid=.*'`
-				if [ $USER_ID -gt 10 ]; then  
-					WS_USER=$TMP_USER
-					SUCC=1
-				else
-					cat <<EOF
+        SUCC=0
+        while [ $SUCC -eq "0" ]; do
+            printf "%s" "5RetHEgU7"
+            read TMP_USER
+            if [ "x$TMP_USER" = "x" ]; then
+                TMP_USER=$WS_USER
+            fi
+            USER_INFO=`id $TMP_USER 2>/dev/null`
+            TST_USER=`expr "$USER_INFO" : 'uid=.*(\(.*\)) gid=.*'`
+            if [ "x$TST_USER" = "x$TMP_USER" ]; then
+                USER_ID=`expr "$USER_INFO" : 'uid=\(.*\)(.*) gid=.*'`
+                if [ $USER_ID -gt 10 ]; then  
+                    WS_USER=$TMP_USER
+                    SUCC=1
+                else
+                    cat <<EOF
 
 [ERROR] It is not allowed to run LiteSpeed web server on behalf of a 
 privileged user, user id must be greater than 10. The user id of user 
@@ -350,23 +350,23 @@ EOF
         TST_GROUPS=$TMP_GROUPS
     fi
 
-	D_GROUP=`$ID_GROUPS $WS_USER`
-	D_GROUP=`expr "$D_GROUP" : '.*gid=[0-9]*(\(.*\)) groups=.*'`
-	echo "Please choose the group that the web server running as."
-	echo 
-	while [ $SUCC -eq "0" ];  do
-		echo "User '$WS_USER' is the member of following group(s): $TST_GROUPS"
-		printf "%s" "5RetHEgU2"
-		read TMP_GROUP
-		if [ "x$TMP_GROUP" = "x" ]; then
-			TMP_GROUP=$D_GROUP
-		fi
-		GRP_RET=`echo $TST_GROUPS | grep -w "$TMP_GROUP"`
-		if [ "x$GRP_RET" != "x" ]; then
-			WS_GROUP=$TMP_GROUP
-			SUCC=1
-		else
-			cat <<EOF
+    D_GROUP=`$ID_GROUPS $WS_USER`
+    D_GROUP=`expr "$D_GROUP" : '.*gid=[0-9]*(\(.*\)) groups=.*'`
+    echo "Please choose the group that the web server running as."
+    echo 
+    while [ $SUCC -eq "0" ];  do
+        echo "User '$WS_USER' is the member of following group(s): $TST_GROUPS"
+        printf "%s" "5RetHEgU8"
+        read TMP_GROUP
+        if [ "x$TMP_GROUP" = "x" ]; then
+            TMP_GROUP=$D_GROUP
+        fi
+        GRP_RET=`echo $TST_GROUPS | grep -w "$TMP_GROUP"`
+        if [ "x$GRP_RET" != "x" ]; then
+            WS_GROUP=$TMP_GROUP
+            SUCC=1
+        else
+            cat <<EOF
 
 [ERROR] '$TMP_GROUP' is not valid group for user '$WS_USER', please choose
 another group in the list or add user '$WS_USER' to group '$TMP_GROUP' 
@@ -395,7 +395,7 @@ LiteSpeed web server is running, in order to continue installation, the server
 must be stopped.
 
 EOF
-        printf "Would you like to stop it now? [Y/n]"
+        printf "5RetHEgU17"
         read TMP_YN
         echo ""
         if [ "x$TMP_YN" = "x" ] || [ `expr "$TMP_YN" : '[Yy]'` -gt 0 ]; then
@@ -435,35 +435,35 @@ You can access the normal web page at http://<YOUR_HOST>:<HTTP_PORT>/
 
 EOF
 
-	SUCC=0
-	DEFAULT_PORT=8088
-	while [ $SUCC -eq "0" ];  do
-		printf "%s" "5RetHEgU3"
-		read TMP_PORT
-		if [ "x$TMP_PORT" = "x" ]; then
-			TMP_PORT=$DEFAULT_PORT
-		fi
-		SUCC=1
-		if [ `expr "$TMP_PORT" : '.*[^0-9]'` -gt 0 ]; then
-			echo "[ERROR] Only digits is allowed, try again!"
-			SUCC=0
-		fi
-		if  [ $SUCC -eq 1 ]; then
-			if [ $INST_USER != "root" ]; then
-				if [ $TMP_PORT -le 1024 ]; then
-					echo "[ERROR] Only 'root' can use port below 1024, try again!"
-					SUCC=0
-				fi
-			fi
-		fi
-		if [ $SUCC -eq 1 ]; then
-			if [ `netstat -an | grep -w $TMP_PORT | grep -w LISTEN | wc -l` -gt 0 ]; then
-				echo "[ERROR] Port $TMP_PORT is in use now, stop the server using this port first,"
-				echo "        or choose another port."
-				SUCC=0
-			fi
-		fi
-	done
+    SUCC=0
+    DEFAULT_PORT=8088
+    while [ $SUCC -eq "0" ];  do
+        printf "%s" "5RetHEgU9"
+        read TMP_PORT
+        if [ "x$TMP_PORT" = "x" ]; then
+            TMP_PORT=$DEFAULT_PORT
+        fi
+        SUCC=1
+        if [ `expr "$TMP_PORT" : '.*[^0-9]'` -gt 0 ]; then
+            echo "[ERROR] Only digits is allowed, try again!"
+            SUCC=0
+        fi
+        if  [ $SUCC -eq 1 ]; then
+            if [ $INST_USER != "root" ]; then
+                if [ $TMP_PORT -le 1024 ]; then
+                    echo "[ERROR] Only 'root' can use port below 1024, try again!"
+                    SUCC=0
+                fi
+            fi
+        fi
+        if [ $SUCC -eq 1 ]; then
+            if [ `netstat -an | grep -w $TMP_PORT | grep -w LISTEN | wc -l` -gt 0 ]; then
+                echo "[ERROR] Port $TMP_PORT is in use now, stop the server using this port first,"
+                echo "        or choose another port."
+                SUCC=0
+            fi
+        fi
+    done
 
     HTTP_PORT=$TMP_PORT
 }
@@ -479,33 +479,33 @@ which can be accessed through http://<YOUR_HOST>:<ADMIN_PORT>/
 
 EOF
 
-	SUCC=0
-	DEFAULT_PORT=7080
-	while [ $SUCC -eq "0" ];  do
-		printf "%s" "5RetHEgU4"
-		read TMP_PORT
-		if [ "x$TMP_PORT" = "x" ]; then
-			TMP_PORT=$DEFAULT_PORT
-		fi
-		SUCC=1
-		if [ `expr "$TMP_PORT" : '.*[^0-9]'` -gt 0 ]; then
-			echo "[ERROR] Only digits is allowed, try again!"
-			SUCC=0
-		fi
-		if  [ $SUCC -eq 1 ]; then
-			if [ $INST_USER != "root" ]; then
-				if [ $TMP_PORT -le 1024 ]; then
-					echo "[ERROR] Only 'root' can use port below 1024, try again!"
-					SUCC=0
-				fi
-			fi
-		fi
-		if  [ $SUCC -eq 1 ]; then
-			if [ $TMP_PORT -eq $HTTP_PORT ]; then
-				echo "[ERROR] The admin HTTP port must be different from the normal HTTP port!"
-				SUCC=0
-			fi
-		fi
+    SUCC=0
+    DEFAULT_PORT=7080
+    while [ $SUCC -eq "0" ];  do
+        printf "%s" "5RetHEgU10"
+        read TMP_PORT
+        if [ "x$TMP_PORT" = "x" ]; then
+            TMP_PORT=$DEFAULT_PORT
+        fi
+        SUCC=1
+        if [ `expr "$TMP_PORT" : '.*[^0-9]'` -gt 0 ]; then
+            echo "[ERROR] Only digits is allowed, try again!"
+            SUCC=0
+        fi
+        if  [ $SUCC -eq 1 ]; then
+            if [ $INST_USER != "root" ]; then
+                if [ $TMP_PORT -le 1024 ]; then
+                    echo "[ERROR] Only 'root' can use port below 1024, try again!"
+                    SUCC=0
+                fi
+            fi
+        fi
+        if  [ $SUCC -eq 1 ]; then
+            if [ $TMP_PORT -eq $HTTP_PORT ]; then
+                echo "[ERROR] The admin HTTP port must be different from the normal HTTP port!"
+                SUCC=0
+            fi
+        fi
 
         if [ $SUCC -eq 1 ]; then
             if [ `netstat -an | grep -w $TMP_PORT | grep -w LISTEN | wc -l` -gt 0 ]; then
@@ -532,7 +532,7 @@ emails listed here.
 
 EOF
 
-        printf "%s" "5RetHEgU14"
+        printf "%s" "5RetHEgU6"
         read ADMIN_EMAIL
         if [ "x$ADMIN_EMAIL" = "x" ]; then
             ADMIN_EMAIL=root@localhost
@@ -569,31 +569,31 @@ engine.
 
 EOF
 
-	SUCC=0
-	SETUP_PHP=1
-	printf "%s" "5RetHEgU5"
-	read TMP_YN
-	if [ "x$TMP_YN" != "x" ]; then
-		if [ `expr "$TMP_YN" : '[Nn]'` -gt 0 ]; then
-			SETUP_PHP=0
-		fi
-	fi
-	if [ $SETUP_PHP -eq 1 ]; then
-		PHP_SUFFIX="php"
-		printf "%s" "5RetHEgU6"
-		read TMP_SUFFIX
-		if [ "x$TMP_SUFFIX" != "x" ]; then
-			PHP_SUFFIX=$TMP_SUFFIX
-		fi
-#		PHP_PORT=5101
-#		SUCC=0
-#		while [ $SUCC -eq "0" ];  do
-#			if [ `netstat -an | grep -w $PHP_PORT | grep -w LISTEN | wc -l` -eq 0 ]; then
-#				SUCC=1
-#			fi
-#			PHP_PORT=`expr $PHP_PORT + 1`
-#		done
-	fi
+    SUCC=0
+    SETUP_PHP=1
+    printf "%s" "5RetHEgU11"
+    read TMP_YN
+    if [ "x$TMP_YN" != "x" ]; then
+        if [ `expr "$TMP_YN" : '[Nn]'` -gt 0 ]; then
+            SETUP_PHP=0
+        fi
+    fi
+    if [ $SETUP_PHP -eq 1 ]; then
+        PHP_SUFFIX="php"
+        printf "%s" "5RetHEgU12" 
+        read TMP_SUFFIX
+        if [ "x$TMP_SUFFIX" != "x" ]; then
+            PHP_SUFFIX=$TMP_SUFFIX
+        fi
+#        PHP_PORT=5101
+#        SUCC=0
+#        while [ $SUCC -eq "0" ];  do
+#            if [ `netstat -an | grep -w $PHP_PORT | grep -w LISTEN | wc -l` -eq 0 ]; then
+#                SUCC=1
+#            fi
+#            PHP_PORT=`expr $PHP_PORT + 1`
+#        done
+    fi
 }
 
 
@@ -1110,7 +1110,7 @@ Note: If AWStats has been installed already, you do not need to
 
 EOF
 
-	printf "%s" "5RetHEgU7"
+    printf "%s" "5RetHEgU13"
 
     read PHPACC
     echo
@@ -1189,11 +1189,11 @@ or http://<ip_or_Hostname_of_this_machine>:<ADMIN_PORT>/
 
 EOF
 
-	if [ $INST_USER = "root" ]; then
-		if [ $INSTALL_TYPE != "upgrade" ]; then
-			printf "%s\n%s" "5RetHEgU8"
-			read START_SERVER
-			echo 
+    if [ $INST_USER = "root" ]; then
+        if [ $INSTALL_TYPE != "upgrade" ]; then
+            printf "%s" "5RetHEgU14"
+            read START_SERVER
+            echo 
 
             if [ "x$START_SERVER" = "x" ]; then
                 START_SERVER=y
@@ -1248,13 +1248,13 @@ EOF
 
 
 
-	if [ $INSTALL_TYPE != "upgrade" ]; then
-		printf "%s" "W5RetHEgU9"
-	else
-		printf "%s" "Would you like to restart it right now [Y/n]? "
-	fi
-	read START_SERVER
-	echo 
+    if [ $INSTALL_TYPE != "upgrade" ]; then
+        printf "%s" "5RetHEgU15"
+    else
+        printf "%s" "5RetHEgU18"
+    fi
+    read START_SERVER
+    echo 
 
     if [ "x$START_SERVER" = "x" ]; then
         START_SERVER=y
