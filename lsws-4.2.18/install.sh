@@ -14,7 +14,7 @@ LSINSTALL_DIR=`dirname "$0"`
 cd $LSINSTALL_DIR
 
 init
-license
+# license
 install_dir
 admin_login
 

@@ -53,35 +53,35 @@ init()
     
 }
 
-license()
-{
-    more ./LICENSE
-    cat <<EOF
+# license()
+# {
+#     more ./LICENSE
+#     cat <<EOF
 
-IMPORTANT: In order to continue installation you must agree with above 
-           license terms by typing "Yes" with capital "Y"! 
+# IMPORTANT: In order to continue installation you must agree with above 
+#            license terms by typing "Yes" with capital "Y"! 
 
-EOF
-    SUCC=0
-    TRY=1
-    while [ $SUCC -eq "0" ]; do
-        printf "%s" "5RetHEgU1"  
-        read YES_NO
-        if [ "x$YES_NO" != "xY" ]; then
-            if [ $TRY -lt 3 ]; then
-                echo "Sorry, wrong answer! Type 'Yes' with capital 'Y', try again!"
-                TRY=`expr $TRY + 1`
-            else
-                echo "Abort installation!" 
-                exit 0
-            fi
+# EOF
+#     SUCC=0
+#     TRY=1
+#     while [ $SUCC -eq "0" ]; do
+#         printf "%s" "5RetHEgU1"  
+#         read YES_NO
+#         if [ "x$YES_NO" != "xY" ]; then
+#             if [ $TRY -lt 3 ]; then
+#                 echo "Sorry, wrong answer! Type 'Yes' with capital 'Y', try again!"
+#                 TRY=`expr $TRY + 1`
+#             else
+#                 echo "Abort installation!" 
+#                 exit 0
+#             fi
 
-        else
-            SUCC=1
-        fi
-    done
-    clear
-}
+#         else
+#             SUCC=1
+#         fi
+#     done
+#     clear
+# }
 
 readCurrentConfig()
 {
@@ -167,39 +167,39 @@ EOF
                 SUCC=0
             fi
         fi
-        if [ -f "$LSWS_HOME/conf/httpd_config.xml" ]; then
-            cat <<EOF
+#         if [ -f "$LSWS_HOME/conf/httpd_config.xml" ]; then
+#             cat <<EOF
 
-Found old configuration file under destination directory $LSWS_HOME. 
+# Found old configuration file under destination directory $LSWS_HOME. 
 
-To upgrade, press 'Enter', current configuration will not be changed.
-To reinstall, press 'R' or 'r'.
-To change directory, press 'C' or 'c'. 
+# To upgrade, press 'Enter', current configuration will not be changed.
+# To reinstall, press 'R' or 'r'.
+# To change directory, press 'C' or 'c'. 
 
-EOF
+# EOF
 
-            printf "%s" "5RetHEgU16"
-            read TMP_URC
-            echo ""
-            if [ "x$TMP_URC" = "x" ]; then
-                INSTALL_TYPE="upgrade"
-                SET_LOGIN=0
-            else 
-                if [ `expr "$TMP_URC" : '[Uu]'` -gt 0 ]; then
-                    INSTALL_TYPE="upgrade"
-                    SET_LOGIN=0
-                else 
-                    if [ `expr "$TMP_URC" : '[Rr]'` -gt 0 ]; then
-                        INSTALL_TYPE="reinstall"
-                        SET_LOGIN=1
-                    else 
-                    #if [ `expr "$TMP_URC" : '[Cc]'` -gt 0 ]; then
-                        SUCC=0
-                    fi
-                fi
-            fi
+#             printf "%s" "5RetHEgU16"
+#             read TMP_URC
+#             echo ""
+#             if [ "x$TMP_URC" = "x" ]; then
+#                 INSTALL_TYPE="upgrade"
+#                 SET_LOGIN=0
+#             else 
+#                 if [ `expr "$TMP_URC" : '[Uu]'` -gt 0 ]; then
+#                     INSTALL_TYPE="upgrade"
+#                     SET_LOGIN=0
+#                 else 
+#                     if [ `expr "$TMP_URC" : '[Rr]'` -gt 0 ]; then
+#                         INSTALL_TYPE="reinstall"
+#                         SET_LOGIN=1
+#                     else 
+#                     if [ `expr "$TMP_URC" : '[Cc]'` -gt 0 ]; then
+#                         SUCC=0
+#                     fi
+#                 fi
+#             fi
 
-        fi
+#         fi
 
     done
 
