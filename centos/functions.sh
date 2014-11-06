@@ -171,7 +171,7 @@ centosversion=$(cat /etc/redhat-release | grep -o [0-9] | sed 1q)
 if [ "$centosversion" = "5" ];then
 rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 else
-rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noarch.rpm
+rpm -ivh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 fi
 bit=$(getconf LONG_BIT)
 if [ $bit = "64" ]; then
