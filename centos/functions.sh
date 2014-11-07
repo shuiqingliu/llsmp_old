@@ -200,9 +200,9 @@ rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-5.noar
 fi
 bit=$(getconf LONG_BIT)
 if [ $bit = "64" ]; then
-yum -y install glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
+yum -y install glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl  libcurl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
 else
-yum -y install flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
+yum -y install flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl   libcurl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
 fi
 }
 
@@ -399,7 +399,7 @@ rm -rf autom4te.*
 bit=$(getconf LONG_BIT)
 if [ "$bit" = "64" ]; then
 ./configure '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
-else
+yum install libcurl-devel -yelse
 ./configure '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 fi
 
@@ -414,7 +414,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_52_ver/sapi/litespeed/php lsphp-$php_52_ver
 ln -sf lsphp-$php_52_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_52_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-dist /usr/local/lsws/lsphp5/lib/php.ini
+cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
@@ -463,7 +463,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_52_ver/sapi/litespeed/php lsphp-$php_52_ver
 ln -sf lsphp-$php_52_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_52_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-dist /usr/local/lsws/lsphp5/lib/php.ini
+cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini

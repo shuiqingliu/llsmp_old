@@ -2,9 +2,9 @@ lsws=lsws-4.2.18.tar.gz
 lsws_source=http://down.llsmp.cn/files/1.0/lsws-4.2.18.tar.gz
 lsws_ver=4.2.18
 
-php_52=php-5.2.17.tar.gz
-php_52_source=http://down.llsmp.cn/files/1.0/php-5.2.17.tar.gz
-php_52_ver=5.2.17
+php_52=php-5.3.29.tar.gz
+php_52_source=http://down.llsmp.cn/files/1.0/php-5.3.29.tar.gz
+php_52_ver=5.3.29
 
 php_53=php-5.3.8.tar.gz
 php_53_source=http://down.llsmp.cn/files/1.0/php-5.3.8.tar.gz
@@ -19,8 +19,8 @@ php_52_mail_header_patch_source=http://files.directadmin.com/services/custombuil
 php_53_mail_header_patch=php-5.3.8-mail-header.patch
 php_53_mail_header_patch_source=http://down.llsmp.cn/files/1.0/php-5.3.8-mail-header.patch
 
-php_ini=php.ini-dist
-php_ini_source=http://down.llsmp.cn/files/1.0/php.ini-dist
+php_ini=php.ini-development
+php_ini_source=http://down.llsmp.cn/files/1.0/php.ini-development
 
 phpinfo=1.0_phpinfo.tar.gz
 phpinfo_source=http://down.llsmp.cn/files/1.0/1.0_phpinfo.tar.gz
