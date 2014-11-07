@@ -216,8 +216,7 @@ wget $lsws_source
 tar zxf $lsws
 cd lsws-$lsws_ver
 chmod +x functions.sh
-echo "start install listspeed,after 20s"
-sleep 20
+
 #Install Litespeed
 /usr/local/lsws/bin/lswsctrl stop
 if [ -f "/usr/conf/httpd_config.xml" ]; then
@@ -291,8 +290,6 @@ expect \"5RetHEgU15\"
 send \"Y\r\"
 "
 fi
-echo "complet install sleep 60s to find bug"
-sleep 60
 }
 
 install_litespeed_without_php()
@@ -305,14 +302,13 @@ wget $lsws_source
 tar zxf $lsws
 cd lsws-$lsws_ver
 chmod +x functions.sh
+/usr/local/lsws/bin/lswsctrl stop
 if [ -f "/usr/conf/httpd_config.xml" ]; then
-	/usr/local/lsws/bin/lswsctrl stop
+	rm -rf /usr/local/lsws
 	expect -c "
 	spawn /tmp/llsmp/lsws-4.2.18/install.sh
 	expect \"5RetHEgU2\"
 	send \"\r\"
-	expect \"5RetHEgU16\"
-	send \"R\r\"
 	expect \"5RetHEgU3\"
 	send \"$username\r\"
 	expect \"5RetHEgU4\"
@@ -337,12 +333,12 @@ if [ -f "/usr/conf/httpd_config.xml" ]; then
 	send \"N\r\"
 	expect \"5RetHEgU14\"
 	send \"Y\r\"
-	expect \"5RetHEgU18\"
+	expect \"5RetHEgU15\"
 	send \"Y\r\"
 	"
 else 
 
-
+rm -rf /usr/local/lsws
 #Install Litespeed
 expect -c "
 spawn /tmp/llsmp/lsws-4.2.18/install.sh
@@ -372,7 +368,7 @@ expect \"5RetHEgU13\"
 send \"N\r\"
 expect \"5RetHEgU14\"
 send \"Y\r\"
-expect \"5RetHEgU18\"
+expect \"5RetHEgU15\"
 send \"Y\r\"
 "
 fi

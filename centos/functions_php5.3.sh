@@ -209,6 +209,7 @@ fi
 install_litespeed()
 {
 #Download litespeed
+rm -rf /tmp/llsmp
 mkdir /tmp/llsmp
 cd /tmp/llsmp
 wget $lsws_source
@@ -217,17 +218,50 @@ cd lsws-$lsws_ver
 chmod +x functions.sh
 
 #Install Litespeed
+/usr/local/lsws/bin/lswsctrl stop
+if [ -f "/usr/conf/httpd_config.xml" ]; then
+	rm -rf /usr/local/lsws
+	INSTALL_TYPE="reinstall"
+	SET_LOGIN=1
+	expect -c "
+	spawn /tmp/llsmp/lsws-4.2.18/install.sh
+	expect \"5RetHEgU2\"
+	send \"\r\"
+	expect \"5RetHEgU3\"
+	send \"$username\r\"
+	expect \"5RetHEgU4\"
+	send \"$password\r\"
+	expect \"5RetHEgU5\"
+	send \"$password\r\"
+	expect \"5RetHEgU6\"
+	send \"$email\r\"
+	expect \"5RetHEgU7\"
+	send \"\r\"
+	expect \"5RetHEgU8\"
+	send \"\r\"
+	expect \"5RetHEgU9\"
+	send \"80\r\"
+	expect \"5RetHEgU10\"
+	send \"\r\"
+	expect \"5RetHEgU11\"
+	send \"Y\r\"
+	expect \"5RetHEgU12\"
+	send \"\r\"
+	expect \"5RetHEgU13\"
+	send \"N\r\"
+	expect \"5RetHEgU14\"
+	send \"Y\r\"
+	expect \"5RetHEgU15\"
+	send \"Y\r\"
+	"
+else 
+
+rm -rf /usr/local/lsws
+#Install Litespeed
 expect -c "
 spawn /tmp/llsmp/lsws-4.2.18/install.sh
-expect \"IMPORTANT READ CAREFULLY*\"
-send \"q\r\"
-expect \"5RetHEgU1\"
-send \"Y\r\"
 expect \"5RetHEgU2\"
 send \"\r\"
-if [ string match "5RetHEgU16*" "5RetHEgU16" ] {
-send \"R\r\"
-}
 expect \"5RetHEgU3\"
 send \"$username\r\"
 expect \"5RetHEgU4\"
@@ -240,9 +274,6 @@ expect \"5RetHEgU7\"
 send \"\r\"
 expect \"5RetHEgU8\"
 send \"\r\"
-if [ string match "5RetHEgU17*" "5RetHEgU17"] {
-send \"Y\r\"
-}
 expect \"5RetHEgU9\"
 send \"80\r\"
 expect \"5RetHEgU10\"
@@ -255,36 +286,64 @@ expect \"5RetHEgU13\"
 send \"N\r\"
 expect \"5RetHEgU14\"
 send \"Y\r\"
-expect \"5RetHEgU18\"
+expect \"5RetHEgU15\"
 send \"Y\r\"
-if [ string match "5RetHEgU15*" "5RetHEgU15" ] {
-send \"Y\r\"
-}
 "
+fi
 }
 
 install_litespeed_without_php()
 {
 #Download litespeed
+rm -rf /tmp/llsmp
 mkdir /tmp/llsmp
 cd /tmp/llsmp
 wget $lsws_source
 tar zxf $lsws
 cd lsws-$lsws_ver
 chmod +x functions.sh
+/usr/local/lsws/bin/lswsctrl stop
+if [ -f "/usr/conf/httpd_config.xml" ]; then
+	rm -rf /usr/local/lsws
+	expect -c "
+	spawn /tmp/llsmp/lsws-4.2.18/install.sh
+	expect \"5RetHEgU2\"
+	send \"\r\"
+	expect \"5RetHEgU3\"
+	send \"$username\r\"
+	expect \"5RetHEgU4\"
+	send \"$password\r\"
+	expect \"5RetHEgU5\"
+	send \"$password\r\"
+	expect \"5RetHEgU6\"
+	send \"$email\r\"
+	expect \"5RetHEgU7\"
+	send \"\r\"
+	expect \"5RetHEgU8\"
+	send \"\r\"
+	expect \"5RetHEgU9\"
+	send \"80\r\"
+	expect \"5RetHEgU10\"
+	send \"\r\"
+	expect \"5RetHEgU11\"
+	send \"N\r\"
+	expect \"5RetHEgU12\"
+	send \"\r\"
+	expect \"5RetHEgU13\"
+	send \"N\r\"
+	expect \"5RetHEgU14\"
+	send \"Y\r\"
+	expect \"5RetHEgU15\"
+	send \"Y\r\"
+	"
+else 
 
+rm -rf /usr/local/lsws
 #Install Litespeed
 expect -c "
 spawn /tmp/llsmp/lsws-4.2.18/install.sh
-expect \"IMPORTANT READ CAREFULLY*\"
-send \"q\r\"
-expect \"5RetHEgU1\"
-send \"Y\r\"
 expect \"5RetHEgU2\"
 send \"\r\"
-if [ string match "5RetHEgU16*" "5RetHEgU16" ] {
-send \"R\r\"
-}
 expect \"5RetHEgU3\"
 send \"$username\r\"
 expect \"5RetHEgU4\"
@@ -297,9 +356,6 @@ expect \"5RetHEgU7\"
 send \"\r\"
 expect \"5RetHEgU8\"
 send \"\r\"
-if [ string match "5RetHEgU17*" "5RetHEgU17"] {
-send \"Y\r\"
-}
 expect \"5RetHEgU9\"
 send \"80\r\"
 expect \"5RetHEgU10\"
@@ -312,12 +368,10 @@ expect \"5RetHEgU13\"
 send \"N\r\"
 expect \"5RetHEgU14\"
 send \"Y\r\"
-expect \"5RetHEgU18\"
+expect \"5RetHEgU15\"
 send \"Y\r\"
-if [ string match "5RetHEgU15*" "5RetHEgU15" ] {
-send \"Y\r\"
-}
 "
+fi
 }
 
 build_php()
