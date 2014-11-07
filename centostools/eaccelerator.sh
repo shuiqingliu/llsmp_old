@@ -2,7 +2,7 @@
 
 clear
 echo "========================================================================="
-echo "eAccelerator Installation for LLsMP 0.6 Written by llsmp.cn"
+echo "eAccelerator Installation for LLsMP 1.0 Written by llsmp.cn"
 echo "========================================================================="
 echo "LLsMP is A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""
@@ -30,7 +30,7 @@ echo "========================================================================="
 mkdir /tmp/llsmp
 cd /tmp/llsmp
 if [ -f /usr/local/lsws/fcgi-bin/lsphp-5.3.* ];then
-wget http://down.llsmp.cn/files/eaccelerator-0.9.6.1.tar.bz2
+wget http://down.llsmp.cn/files/1.0/eaccelerator-0.9.6.1.tar.bz2
 tar xvf eaccelerator-0.9.6.1.tar.bz2
 mv eaccelerator-0.9.6.1 /usr/local/lsws/phpbuild/eaccelerator-0.9.6.1
 cd /usr/local/lsws/phpbuild/eaccelerator-0.9.6.1
@@ -44,7 +44,7 @@ chmod 777 /tmp/eaccelerator
 
 else
 
-wget http://down.llsmp.cn/files/eaccelerator-0.9.5.3.tar.bz2
+wget http://down.llsmp.cn/files/1.0/eaccelerator-0.9.5.3.tar.bz2
 tar xvf eaccelerator-0.9.5.3.tar.bz2
 mv eaccelerator-0.9.5.3 /usr/local/lsws/phpbuild/eaccelerator-0.9.5.3
 cd /usr/local/lsws/phpbuild/eaccelerator-0.9.5.3

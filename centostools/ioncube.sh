@@ -2,7 +2,7 @@
 
 clear
 echo "========================================================================="
-echo "ionCube Installation for LLsMP 0.6 Written by llsmp.cn"
+echo "ionCube Installation for LLsMP 1.0 Written by llsmp.cn"
 echo "========================================================================="
 echo "LLsMP is A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""

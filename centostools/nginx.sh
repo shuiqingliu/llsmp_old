@@ -2,7 +2,7 @@
 
 clear
 echo "========================================================================="
-echo "Nginx Frontend plugin for LLsMP 0.6 Written by llsmp.cn"
+echo "Nginx Frontend plugin for LLsMP 1.0 Written by llsmp.cn"
 echo "========================================================================="
 echo "LLsMP is A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""
@@ -13,12 +13,12 @@ echo ""
 check_installed()
 {
 version=$(cat /root/llsmp/.installed)
-if [ "$version" = "LLsMP 0.6 CentOS" ];then
+if [ "$version" = "LLsMP 1.0 CentOS" ];then
 echo "========================================================================="
 echo "LNLsMP installtion is being started" 
 echo "========================================================================="
 else
-echo "LLsMP 0.6 Centos have not been installed"
+echo "LLsMP 1.0 Centos have not been installed"
 exit 1
 fi
 }
