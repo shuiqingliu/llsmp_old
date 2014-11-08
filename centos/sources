@@ -13,8 +13,8 @@ php_54_ver=5.4.34
 php_litespeed=php-litespeed-6.7.tgz
 php_litespeed_source=http://www.litespeedtech.com/packages/lsapi/php-litespeed-6.7.tgz
 
-php_53_mail_header_patch=php-5.2.17-mail-header.patch
-php_53_mail_header_patch_source=http://files.directadmin.com/services/custombuild/php-5.2.17-mail-header.patch
+php_53_mail_header_patch=php-5.3.x-mail-header.patch
+php_53_mail_header_patch_source=http://files.directadmin.com/services/custombuild/php-5.3.x-mail-header.patch
 
 php_54_mail_header_patch=php-5.4.34-mail-header.patch
 php_54_mail_header_patch_source=http://down.llsmp.cn/files/1.0/php-5.4.34-mail-header.patch
