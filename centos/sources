@@ -6,9 +6,9 @@ php_53=php-5.3.29.tar.gz
 php_53_source=http://down.llsmp.cn/files/1.0/php-5.3.29.tar.gz
 php_53_ver=5.3.29
 
-php_54=php-5.3.8.tar.gz
-php_54_source=http://down.llsmp.cn/files/1.0/php-5.3.8.tar.gz
-php_54_ver=5.3.8
+php_54=php-5.4.34.tar.gz
+php_54_source=http://down.llsmp.cn/files/1.0/php-5.4.34.tar.gz
+php_54_ver=5.4.34
 
 php_litespeed=php-litespeed-6.7.tgz
 php_litespeed_source=http://www.litespeedtech.com/packages/lsapi/php-litespeed-6.7.tgz
@@ -16,8 +16,8 @@ php_litespeed_source=http://www.litespeedtech.com/packages/lsapi/php-litespeed-6
 php_53_mail_header_patch=php-5.2.17-mail-header.patch
 php_53_mail_header_patch_source=http://files.directadmin.com/services/custombuild/php-5.2.17-mail-header.patch
 
-php_54_mail_header_patch=php-5.3.8-mail-header.patch
-php_54_mail_header_patch_source=http://down.llsmp.cn/files/1.0/php-5.3.8-mail-header.patch
+php_54_mail_header_patch=php-5.4.34-mail-header.patch
+php_54_mail_header_patch_source=http://down.llsmp.cn/files/1.0/php-5.4.34-mail-header.patch
 
 php_ini=php.ini-development
 php_ini_source=http://down.llsmp.cn/files/1.0/php.ini-development
