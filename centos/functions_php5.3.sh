@@ -470,9 +470,9 @@ mkdir -p /usr/local/lsws/lsphp5/lib/php/extensions/no-debug-non-zts-20090626
 install_mysql()
 {
 cd /tmp/llsmp
-wget http://down.llsmp.cn/files/mysql-5.1.54.tar.gz
-tar xvf mysql-5.1.54.tar.gz
-cd mysql-5.1.54/
+wget http://down.llsmp.cn/files/mysql-5.1.73.tar.gz
+tar xvf mysql-5.1.73.tar.gz
+cd mysql-5.1.73/
 ./configure --prefix=/usr/local/mysql --with-extra-charsets=all --enable-thread-safe-client --enable-assembler --with-charset=utf8 --enable-thread-safe-client --with-extra-charsets=all --with-big-tables --with-readline --with-ssl --with-embedded-server --enable-local-infile
 make && make install
 cd ../
