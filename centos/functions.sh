@@ -399,7 +399,7 @@ rm -rf autom4te.*
 bit=$(getconf LONG_BIT)
 if [ "$bit" = "64" ]; then
 ./configure '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
-yum install libcurl-devel -yelse
+else
 ./configure '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 fi
 
@@ -576,5 +576,5 @@ echo "BYE~"
 
 installed_file()
 {
-echo "LLsMP 0.6 CentOS" >> /root/llsmp/.installed
+echo "LLsMP 1.0 CentOS" >> /root/llsmp/.installed
 }
