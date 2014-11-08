@@ -30,10 +30,10 @@ fi
 
 cd `dirname "$0"`
 
-if [ "$1" = "php5.3" ];then
-source ./functions_php5.3.sh 2>/dev/null
+if [ "$1" = "php5.4" ];then
+source ./functions_php5.4.sh 2>/dev/null
 if [ $? != 0 ]; then
-    . ./functions_php5.3.sh
+    . ./functions_php5.4.sh
     if [ $? != 0 ]; then
         echo [ERROR] Can not include 'functions.sh'.
         exit 1
