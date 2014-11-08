@@ -412,7 +412,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
 ln -sf lsphp-$php_53_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
-wget http://down.llsmp.cn/files/php.ini-dist -O /usr/local/lsws/lsphp5/lib/php.ini
+wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
@@ -459,7 +459,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
 ln -sf lsphp-$php_53_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
-wget http://down.llsmp.cn/files/php.ini-dist -O /usr/local/lsws/lsphp5/lib/php.ini
+wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
