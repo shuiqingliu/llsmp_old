@@ -9,3 +9,4 @@
 > 7. 修复已安装Litespeed用户，在停止Litespeed时候的错误
 > 8. 修复重复安装用户在解压lsws时候的错误
 > 9. 修复php在高版本系统上出现的编译错误
+> 10. 切换php-ini 为默认的php.ini-development
