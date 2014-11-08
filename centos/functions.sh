@@ -381,17 +381,17 @@ export PHP_AUTOCONF=/usr/bin/autoconf-2.13
 export PHP_AUTOHEADER=/usr/bin/autoheader-2.13
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_52_source
+wget $php_53_source
 wget $php_litespeed_source
-wget $php_52_mail_header_patch_source
-tar zxf $php_52
+wget $php_53_mail_header_patch_source
+tar zxf $php_53
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_52_ver
-patch -p1 < /tmp/llsmp/$php_52_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_52_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_53_ver
+patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_52_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_52_ver
+mv php-$php_53_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_53_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
@@ -408,13 +408,13 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_52_ver" ] ; then
-	mv lsphp-$php_52_ver lsphp-$php_52_ver.bak
+if [ -e "lsphp-$php_53_ver" ] ; then
+	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_52_ver/sapi/litespeed/php lsphp-$php_52_ver
-ln -sf lsphp-$php_52_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_52_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
+cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
+ln -sf lsphp-$php_53_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
+cp -f /usr/local/lsws/phpbuild/php-$php_53_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
@@ -430,17 +430,17 @@ export PHP_AUTOCONF=/usr/bin/autoconf-2.13
 export PHP_AUTOHEADER=/usr/bin/autoheader-2.13
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_52_source
+wget $php_53_source
 wget $php_litespeed_source
-wget $php_52_mail_header_patch_source
-tar zxf $php_52
+wget $php_53_mail_header_patch_source
+tar zxf $php_53
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_52_ver
-patch -p1 < /tmp/llsmp/$php_52_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_52_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_53_ver
+patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_52_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_52_ver
+mv php-$php_53_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_53_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
@@ -457,13 +457,13 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_52_ver" ] ; then
-	mv lsphp-$php_52_ver lsphp-$php_52_ver.bak
+if [ -e "lsphp-$php_53_ver" ] ; then
+	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_52_ver/sapi/litespeed/php lsphp-$php_52_ver
-ln -sf lsphp-$php_52_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_52_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_52_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
+cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
+ln -sf lsphp-$php_53_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
+cp -f /usr/local/lsws/phpbuild/php-$php_53_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini

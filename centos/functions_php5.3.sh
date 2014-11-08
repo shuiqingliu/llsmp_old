@@ -379,17 +379,17 @@ build_php()
 #Build PHP 
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_53_source
+wget $php_54_source
 wget $php_litespeed_source
-wget $php_53_mail_header_patch_source
-tar zxf $php_53
+wget $php_54_mail_header_patch_source
+tar zxf $php_54
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_53_ver
-patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_54_ver
+patch -p1 < /tmp/llsmp/$php_54_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_54_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_53_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_53_ver
+mv php-$php_54_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_54_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
@@ -406,12 +406,12 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_53_ver" ] ; then
-	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
+if [ -e "lsphp-$php_54_ver" ] ; then
+	mv lsphp-$php_54_ver lsphp-$php_54_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
-ln -sf lsphp-$php_53_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
+cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
+ln -sf lsphp-$php_54_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
 wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
@@ -426,17 +426,17 @@ build_php_without_mysql()
 #Build PHP 
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_53_source
+wget $php_54_source
 wget $php_litespeed_source
-wget $php_53_mail_header_patch_source
-tar zxf $php_53
+wget $php_54_mail_header_patch_source
+tar zxf $php_54
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_53_ver
-patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_54_ver
+patch -p1 < /tmp/llsmp/$php_54_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_54_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_53_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_53_ver
+mv php-$php_54_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_54_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
@@ -453,12 +453,12 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_53_ver" ] ; then
-	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
+if [ -e "lsphp-$php_54_ver" ] ; then
+	mv lsphp-$php_54_ver lsphp-$php_54_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
-ln -sf lsphp-$php_53_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
+cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
+ln -sf lsphp-$php_54_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
 wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
