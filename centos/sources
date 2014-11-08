@@ -26,9 +26,9 @@ phpinfo=1.0_phpinfo.tar.gz
 phpinfo_source=http://down.llsmp.cn/files/1.0/1.0_phpinfo.tar.gz
 phpinfo_dir=phpinfo
 
-phpmyadmin=phpMyAdmin-3.3.9-all-languages.tar.gz
-phpmyadmin_source=http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/3.3.9/phpMyAdmin-3.3.9-all-languages.tar.gz
-phpmyadmin_dir=phpMyAdmin-3.3.9-all-languages
+phpmyadmin=phpMyAdmin-4.2.11-all-languages.tar.gz
+phpmyadmin_source=http://downloads.sourceforge.net/project/phpmyadmin/phpMyAdmin/4.2.11/phpMyAdmin-4.2.11-all-languages.tar.gz
+phpmyadmin_dir=phpMyAdmin-4.2.11-all-languages
 
 default_conf=conf.tar.gz
 default_conf_source=http://down.llsmp.cn/files/1.0/conf.tar.gz
