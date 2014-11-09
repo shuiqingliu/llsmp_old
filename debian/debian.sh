@@ -15,7 +15,7 @@ if [ $? != 0 ]; then
 fi
 clear
 echo "========================================================================="
-echo "LLsMP V0.6 for Debian Linux Written by llsmp.cn"
+echo "LLsMP V1.0 for Debian Linux Written by llsmp.cn"
 echo "========================================================================="
 echo "A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""
@@ -29,11 +29,11 @@ if [ $(id -u) != "0" ]; then
 fi
 
 cd `dirname "$0"`
-if [ "$1" = "php5.3" ];then
 
-source ./functions_php5.3.sh 2>/dev/null
+if [ "$1" = "php5.4" ];then
+source ./functions_php5.4.sh 2>/dev/null
 if [ $? != 0 ]; then
-    . ./functions_php5.3.sh
+    . ./functions_php5.4.sh
     if [ $? != 0 ]; then
         echo [ERROR] Can not include 'functions.sh'.
         exit 1

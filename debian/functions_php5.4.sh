@@ -169,9 +169,9 @@ apt-get remove -y --force-yes -q autoconf*
 export DEBIAN_FRONTEND=noninteractive
 bit=$(getconf LONG_BIT)
 if [ $bit = "64" ]; then
-apt-get install -y --force-yes -q bzip2 ia32-libs bison lemon re2c flex expect libmysql++-dev autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt mysql-server libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
+apt-get install -y --force-yes -q libncurses5-dev bzip2 ia32-libs bison lemon re2c flex expect libmysql++-dev autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt zlib-bin zlib1g-dev libtool libltdl*
 else
-apt-get install -y --force-yes -q bzip2 bison lemon re2c flex expect libmysql++-dev autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt mysql-server libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
+apt-get install -y --force-yes -q libncurses5-dev bzip2 bison lemon re2c flex expect libmysql++-dev autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt zlib-bin zlib1g-dev libtool libltdl*
 fi
 }
 
@@ -186,9 +186,9 @@ apt-get remove -y --force-yes -q autoconf*
 export DEBIAN_FRONTEND=noninteractive
 bit=$(getconf LONG_BIT)
 if [ "$bit" == "64" ]; then
-apt-get install -y --force-yes -q bzip2 ia32-libs bison lemon re2c flex expect autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
+apt-get install -y --force-yes -q libncurses5-dev bzip2 ia32-libs bison lemon re2c flex expect autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
 else
-apt-get install -y --force-yes -q bzip2 bison lemon re2c flex expect autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
+apt-get install -y --force-yes -q libncurses5-dev bzip2 bison lemon re2c flex expect autoconf2.13 gcc g++ libjpeg62-dev libpng12-dev libxml2-dev curl libcurl4-openssl-dev libmcrypt-dev libmhash-dev libfreetype6-dev patch make mcrypt libmysql++-dev zlib-bin zlib1g-dev libtool libltdl*
 fi
 }
 
@@ -357,7 +357,6 @@ send \"Y\r\"
 expect \"5RetHEgU15\"
 send \"Y\r\"
 "
-fi
 }
 
 build_php()
@@ -365,26 +364,26 @@ build_php()
 #Build PHP 
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_53_source
+wget $php_54_source
 wget $php_litespeed_source
-wget $php_53_mail_header_patch_source
-tar zxf $php_53
+wget $php_54_mail_header_patch_source
+tar zxf $php_54
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_53_ver
-patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_54_ver
+patch -p1 < /tmp/llsmp/$php_54_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_54_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_53_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_53_ver
+mv php-$php_54_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_54_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
 
 bit=$(getconf LONG_BIT)
 if [ "$bit" = "64" ]; then
-./configure '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
+./configure '--disable-fileinfo' '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql=mysqlnd' '--with-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 else
-./configure '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
+./configure '--disable-fileinfo' '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql=mysqlnd' '--with-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 fi
 
 make clean
@@ -392,18 +391,18 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_53_ver" ] ; then
-	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
+if [ -e "lsphp-$php_54_ver" ] ; then
+	mv lsphp-$php_54_ver lsphp-$php_54_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
-ln -sf lsphp-$php_53_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_53_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
+cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
+ln -sf lsphp-$php_54_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
+wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
 echo "[zend]" >>/usr/local/lsws/lsphp5/lib/php.ini
-mkdir -p /usr/local/lsws/lsphp5/lib/php/extensions/no-debug-non-zts-20060613
+mkdir -p /usr/local/lsws/lsphp5/lib/php/extensions/no-debug-non-zts-20090626
 }
 
 
@@ -412,26 +411,26 @@ build_php_without_mysql()
 #Build PHP 
 mkdir /usr/local/lsws/phpbuild
 cd /tmp/llsmp
-wget $php_53_source
+wget $php_54_source
 wget $php_litespeed_source
-wget $php_53_mail_header_patch_source
-tar zxf $php_53
+wget $php_54_mail_header_patch_source
+tar zxf $php_54
 tar zxf $php_litespeed
-cd /tmp/llsmp/php-$php_53_ver
-patch -p1 < /tmp/llsmp/$php_53_mail_header_patch
-mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_53_ver/sapi/litespeed/
+cd /tmp/llsmp/php-$php_54_ver
+patch -p1 < /tmp/llsmp/$php_54_mail_header_patch
+mv /tmp/llsmp/litespeed /tmp/llsmp/php-$php_54_ver/sapi/litespeed/
 cd /tmp/llsmp
-mv php-$php_53_ver /usr/local/lsws/phpbuild
-cd /usr/local/lsws/phpbuild/php-$php_53_ver
+mv php-$php_54_ver /usr/local/lsws/phpbuild
+cd /usr/local/lsws/phpbuild/php-$php_54_ver
 touch ac*
 rm -rf autom4te.*
 ./buildconf --force
 
 bit=$(getconf LONG_BIT)
 if [ "$bit" = "64" ]; then
-./configure '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
+./configure '--disable-fileinfo' '--prefix=/usr/local/lsws/lsphp5' '--with-libdir=lib64' '--with-pdo-mysql=mysqlnd' '--with-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 else
-./configure '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql' '--with-mysql' '--with-mysqli' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
+./configure '--disable-fileinfo' '--prefix=/usr/local/lsws/lsphp5' '--with-pdo-mysql=mysqlnd' '--with-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--with-zlib' '--with-gd' '--enable-shmop' '--enable-sockets' '--enable-sysvsem' '--enable-sysvshm' '--enable-magic-quotes' '--enable-mbstring' '--with-iconv' '--with-litespeed' '--enable-inline-optimization' '--with-curl' '--with-curlwrappers' '--with-mcrypt' '--with-mhash' '--with-mime-magic' '--with-openssl' '--with-freetype-dir=/usr/lib' '--with-jpeg-dir=/usr/lib' '--enable-bcmath' $php_conf
 fi
 
 make clean
@@ -439,44 +438,67 @@ echo `date`
 make
 make -k install
 cd /usr/local/lsws/fcgi-bin
-if [ -e "lsphp-$php_53_ver" ] ; then
-	mv lsphp-$php_53_ver lsphp-$php_53_ver.bak
+if [ -e "lsphp-$php_54_ver" ] ; then
+	mv lsphp-$php_54_ver lsphp-$php_54_ver.bak
 fi
-cp /usr/local/lsws/phpbuild/php-$php_53_ver/sapi/litespeed/php lsphp-$php_53_ver
-ln -sf lsphp-$php_53_ver lsphp5
-chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_53_ver
-cp -f /usr/local/lsws/phpbuild/php-$php_53_ver/php.ini-development /usr/local/lsws/lsphp5/lib/php.ini
+cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
+ln -sf lsphp-$php_54_ver lsphp5
+chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
+wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
 echo "[zend]" >>/usr/local/lsws/lsphp5/lib/php.ini
-mkdir -p /usr/local/lsws/lsphp5/lib/php/extensions/no-debug-non-zts-20060613
+mkdir -p /usr/local/lsws/lsphp5/lib/php/extensions/no-debug-non-zts-20090626
 }
 
 install_mysql()
 {
-#Mysql Setting
+rm /etc/my.cnf
+rm /etc/mysql/my.cnf
+rm -rf /etc/mysql/
+
+groupadd mysql
+useradd -s /sbin/nologin -g mysql mysql
+
+cd /tmp/llsmp
+wget http://down.llsmp.cn/files/mysql-5.1.54.tar.gz
+tar xvf mysql-5.1.54.tar.gz
+cd mysql-5.1.54/
+./configure --prefix=/usr/local/mysql --with-extra-charsets=all --enable-thread-safe-client --enable-assembler --with-charset=utf8 --enable-thread-safe-client --with-extra-charsets=all --with-big-tables --with-readline --with-ssl --with-embedded-server --enable-local-infile
+make && make install
+cd ../
+
+chown -R mysql /usr/local/mysql/var
+chgrp -R mysql /usr/local/mysql/.
+
+cp /usr/local/mysql/share/mysql/my-medium.cnf /etc/my.cnf
+sed -i 's/skip-locking/skip-external-locking/g' /etc/my.cnf
+/usr/local/mysql/bin/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/var
+ln -s /usr/local/mysql/share/mysql /usr/share/
+
+chown -R mysql /usr/local/mysql/var
+chgrp -R mysql /usr/local/mysql/.
+cp /usr/local/mysql/share/mysql/mysql.server /etc/init.d/mysql
+chmod 755 /etc/init.d/mysql
+
+cat > /etc/ld.so.conf.d/mysql.conf<<EOF
+/usr/local/mysql/lib/mysql
+/usr/local/lib
+EOF
+ldconfig
+
+ln -s /usr/local/mysql/lib/mysql /usr/lib/mysql
+ln -s /usr/local/mysql/include/mysql /usr/include/mysql
+
+ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql
+ln -s /usr/local/mysql/bin/mysqldump /usr/bin/mysqldump
+ln -s /usr/local/mysql/bin/myisamchk /usr/bin/myisamchk
+
 /etc/init.d/mysql start
-mysqladmin -u root password $password
+/usr/local/mysql/bin/mysqladmin -u root password $password
 
-#check ubuntu version
-mysql_version=$(mysql -V | awk '{ print $5 }' | awk -F "." '{print $1"."$2}')
-
-if [ "$mysql_version" = "5.1" ]; then
-mysql_subversion=$(mysql -V | awk '{ print $5 }' | awk -F "." '{print $3}' | awk -F "," '{print $1}')
-
-if [ $mysql_subversion -ge 12 ];then
-sed -i '/\[mysqld\]/a\skip-locking\nskip-innodb' /etc/mysql/my.cnf
-else
-sed -i '/\[mysqld\]/a\skip-locking\nskip-bdb\nskip-innodb' /etc/mysql/my.cnf
-fi
-
-else
-sed -i '/\[mysqld\]/a\skip-locking\nskip-bdb\nskip-innodb' /etc/mysql/my.cnf
-
-fi
 /etc/init.d/mysql restart
-update-rc.d mysql defaults
 }
 
 phpinfo()
@@ -531,7 +553,7 @@ else
 echo "PHP [not found]"
 fi
 
-if [ -f /usr/bin/mysql ];then
+if [ -f /usr/local/mysql/bin/mysql ];then
 echo "MySQL [found]"
 else
 echo "MySQL [not found]"
