@@ -29,7 +29,7 @@ echo "Installing..."
 echo "========================================================================="
 mkdir /tmp/llsmp
 cd /tmp/llsmp
-if [ -f /usr/local/lsws/fcgi-bin/lsphp-5.3.* ];then
+if [ -f /usr/local/lsws/fcgi-bin/lsphp-5.4.* ];then
 wget http://down.llsmp.cn/files/1.0/eaccelerator-0.9.6.1.tar.bz2
 tar xvf eaccelerator-0.9.6.1.tar.bz2
 mv eaccelerator-0.9.6.1 /usr/local/lsws/phpbuild/eaccelerator-0.9.6.1
