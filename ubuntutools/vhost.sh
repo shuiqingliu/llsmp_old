@@ -8,7 +8,7 @@ fi
 
 clear
 echo "========================================================================="
-echo "Create a Virtual Host for LLsMP V0.6,  Written by llsmp.cn "
+echo "Create a Virtual Host for LLsMP V1.0,  Written by llsmp.cn "
 echo "========================================================================="
 echo "LLsMP is a tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo "This script is a tool to Create virtual host for Litespeed "

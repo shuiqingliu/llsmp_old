@@ -2,7 +2,7 @@
 
 clear
 echo "========================================================================="
-echo "Google Perf Tools Installation for LLsMP 0.6 Written by llsmp.cn"
+echo "Google Perf Tools Installation for LLsMP 1.0 Written by llsmp.cn"
 echo "========================================================================="
 echo "LLsMP is A tool to auto-compile & install Litespeed+MySQL+PHP on Linux "
 echo ""
@@ -31,10 +31,10 @@ bit=$(getconf LONG_BIT)
 if [ "$bit" = "64" ]; then
 mkdir /tmp/llsmp
 cd /tmp/llsmp
-wget http://down.llsmp.cn/files/libunwind-0.99.tar.gz
-tar zxvf libunwind-0.99.tar.gz
-rm -f libunwind-0.99.tar.gz
-cd libunwind-0.99
+wget http://down.llsmp.cn/files/1.0/libunwind-1.1.tar.gz
+tar zxvf libunwind-1.1.tar.gz
+rm -f libunwind-1.1.tar.gz
+cd libunwind-1.1
 CFLAGS=-fPIC ./configure
 make CFLAGS=-fPIC
 make CFLAGS=-fPIC install
@@ -44,9 +44,10 @@ fi
 
 mkdir /tmp/llsmp
 cd /tmp/llsmp
-wget http://down.llsmp.cn/files/google-perftools-1.8.3.tar.gz
-tar zxvf google-perftools-1.8.3.tar.gz
-cd google-perftools-1.8.3
+wget http://down.llsmp.cn/files/1.0/gperftools-2.1.tar.gz
+tar zxvf gperftools-2.1.tar.gz
+rm -f gperftools-2.1.tar.gz
+cd gperftools-2.1
 ./configure
 make && make install
 echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf
