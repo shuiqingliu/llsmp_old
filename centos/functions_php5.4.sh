@@ -175,9 +175,9 @@ rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noar
 fi
 bit=$(getconf LONG_BIT)
 if [ $bit = "64" ]; then
-yum -y --disableplugin=fastestmirror install ncurses-devel glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel libmcrypt-devel freetype-devel patch make zlib-devel libtool-ltdl-devel
+yum -y --disableplugin=fastestmirror install openssl-devel ncurses-devel glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel libmcrypt-devel freetype-devel patch make zlib-devel libtool-ltdl-devel
 else
-yum -y --disableplugin=fastestmirror install ncurses-devel flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel libmcrypt-devel freetype-devel patch make zlib-devel libtool-ltdl-devel
+yum -y --disableplugin=fastestmirror install openssl-devel ncurses-devel flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel libmcrypt-devel freetype-devel patch make zlib-devel libtool-ltdl-devel
 fi
 }
 
@@ -200,9 +200,9 @@ rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noar
 fi
 bit=$(getconf LONG_BIT)
 if [ $bit = "64" ]; then
-yum -y --disableplugin=fastestmirror install ncurses-devel glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
+yum -y --disableplugin=fastestmirror install openssl-devel openssl-devel ncurses-devel glibc flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
 else
-yum -y --disableplugin=fastestmirror install ncurses-devel flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
+yum -y --disableplugin=fastestmirror install openssl-devel ncurses-devel flex re2c bison gcc automake mhash-devel expect ruby autoconf213 libtool gcc-c++ libjpeg-devel libpng-devel libxml2-devel curl curl-devel freetype-devel patch make libmcrypt-devel zlib-devel libtool-ltdl-devel
 fi
 }
 
