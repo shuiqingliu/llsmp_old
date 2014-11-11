@@ -503,9 +503,9 @@ ln -s /usr/local/mysql/bin/mysqldump /usr/bin/mysqldump
 ln -s /usr/local/mysql/bin/myisamchk /usr/bin/myisamchk
 
 /usr/local/mysql/bin/mysqladmin -u root password $password
-
-/etc/init.d/mysql restart
 /etc/init.d/mysql stop
+/etc/init.d/mysql restart
+
 }
 
 phpinfo()
