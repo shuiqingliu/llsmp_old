@@ -357,6 +357,8 @@ send \"Y\r\"
 expect \"5RetHEgU15\"
 send \"Y\r\"
 "
+
+fi
 }
 
 build_php()
