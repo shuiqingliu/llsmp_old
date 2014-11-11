@@ -399,7 +399,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
 ln -sf lsphp-$php_54_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
-wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
+wget http://down.llsmp.cn/files/1.0/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
@@ -446,7 +446,7 @@ fi
 cp /usr/local/lsws/phpbuild/php-$php_54_ver/sapi/litespeed/php lsphp-$php_54_ver
 ln -sf lsphp-$php_54_ver lsphp5
 chown -R lsadm:lsadm /usr/local/lsws/phpbuild/php-$php_54_ver
-wget http://down.llsmp.cn/files/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
+wget http://down.llsmp.cn/files/1.0/php.ini-development -O /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/extension_dir/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/sendmail_path/d' /usr/local/lsws/lsphp5/lib/php.ini
 sed -i '/smtp_port/a\sendmail_path = \/usr\/sbin\/sendmail -t\n' /usr/local/lsws/lsphp5/lib/php.ini
@@ -464,9 +464,9 @@ groupadd mysql
 useradd -s /sbin/nologin -g mysql mysql
 
 cd /tmp/llsmp
-wget http://down.llsmp.cn/files/mysql-5.1.54.tar.gz
-tar xvf mysql-5.1.54.tar.gz
-cd mysql-5.1.54/
+wget http://down.llsmp.cn/files/1.0/mysql-5.1.73.tar.gz
+tar xvf mysql-5.1.73.tar.gz
+cd mysql-5.1.73/
 ./configure --prefix=/usr/local/mysql --with-extra-charsets=all --enable-thread-safe-client --enable-assembler --with-charset=utf8 --enable-thread-safe-client --with-extra-charsets=all --with-big-tables --with-readline --with-ssl --with-embedded-server --enable-local-infile
 make && make install
 cd ../
